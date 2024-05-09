@@ -1,5 +1,11 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:synergy/view/home/home_view.dart';
+import 'package:synergy/view/login/login_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -12,6 +18,16 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
+  }
+
+  void nextSession() {
+    Timer(const Duration(seconds: 3), () {
+      if (FirebaseAuth.instance.currentUser == null) {
+        Get.offAll(() => LoginView());
+      } else {
+        Get.offAll(() => const HomeView());
+      }
+    });
   }
 
   @override

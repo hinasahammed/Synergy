@@ -123,9 +123,12 @@ class LoginView extends StatelessWidget {
                             width: size.width,
                             height: 50,
                             child: CustomButton(
+                              isLoading: loginViewmodel.isLoading.value,
                               btnTitle: 'Login',
                               onPressed: () {
-                                if (_formKey.currentState!.validate()) {}
+                                if (_formKey.currentState!.validate()) {
+                                  loginViewmodel.login(context);
+                                }
                               },
                             ),
                           ),

@@ -15,7 +15,6 @@ class SignupViewmodel extends GetxController {
   Future signup(BuildContext context) async {
     isLoading.value = true;
     try {
-      print('dkjgjdf');
       await auth
           .createUserWithEmailAndPassword(
         email: emailController.value.text.trim(),
@@ -30,8 +29,6 @@ class SignupViewmodel extends GetxController {
         );
       }).whenComplete(() => isLoading.value = false);
     } on FirebaseAuthException catch (e) {
-      print(e);
-      print(e.code);
       if (context.mounted) {
         switch (e.code) {
           case "invalid-email":

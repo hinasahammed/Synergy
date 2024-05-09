@@ -1,7 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:synergy/view/signup/signup_view.dart';
+import 'package:synergy/res/components/bottom_bar.dart';
+import 'package:synergy/view/login/login_view.dart';
+import 'package:synergy/view/onboard/onboard_view.dart';
+import 'package:synergy/view/splash/splash_view.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -27,7 +31,20 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: SignupView(),
+      // home: StreamBuilder(
+      //   stream: FirebaseAuth.instance.authStateChanges(),
+      //   builder: (context, snapshot) {
+      //     if (snapshot.connectionState == ConnectionState.waiting) {
+      //       return const SplashView();
+      //     }
+      //     if (snapshot.data == null) {
+      //       return LoginView();
+      //     } else {
+      //       return const BottomBar();
+      //     }
+      //   },
+      // ),
+      home: OnboardView(),
     );
   }
 }
