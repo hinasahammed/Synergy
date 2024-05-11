@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:synergy/res/components/custom_button.dart';
 import 'package:synergy/res/components/custom_text_form_field.dart';
+import 'package:synergy/view/signup/signup_view.dart';
 import 'package:synergy/viewmodel/controller/login/login_viewmodel.dart';
 
 class LoginView extends StatelessWidget {
@@ -143,7 +144,9 @@ class LoginView extends StatelessWidget {
                                 ),
                               ),
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Get.to(SignupView());
+                                },
                                 child: Text(
                                   "Sign up",
                                   style: theme.textTheme.bodyLarge!.copyWith(

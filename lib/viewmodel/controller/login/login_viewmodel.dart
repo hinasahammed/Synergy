@@ -1,14 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:synergy/res/components/bottom_bar.dart';
 import 'package:synergy/res/utils/utils.dart';
+import 'package:synergy/view/onboard/onboard_view.dart';
 
 class LoginViewmodel extends GetxController {
   final emailController = TextEditingController().obs;
   final passwordController = TextEditingController().obs;
   final auth = FirebaseAuth.instance;
   RxBool isLoading = false.obs;
+  final box = GetStorage();
 
   Future login(BuildContext context) async {
     try {
@@ -19,9 +22,17 @@ class LoginViewmodel extends GetxController {
         password: passwordController.value.text,
       )
           .then((value) {
-        Get.offAll(
-          const BottomBar(),
-        );
+        var alreadyStarted = box.read('alreadyStarted');
+        if (alreadyStarted == null || alreadyStarted == false) {
+          Get.offAll(
+            OnboardView(),
+          );
+        } else {
+          Get.offAll(
+            const BottomBar(),
+          );
+        }
+
         Utils.showSnackbarToast(
             context, 'Login Successfull', Icons.check_circle);
       });

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -10,6 +11,7 @@ class SignupViewmodel extends GetxController {
   final passwordController = TextEditingController().obs;
   final confirmPasswordController = TextEditingController().obs;
   final auth = FirebaseAuth.instance;
+  final firestore = FirebaseFirestore.instance;
   RxBool isLoading = false.obs;
 
   Future signup(BuildContext context) async {
@@ -21,12 +23,14 @@ class SignupViewmodel extends GetxController {
         password: confirmPasswordController.value.text,
       )
           .then((value) {
-        Get.to(LoginView());
-        Utils.showSnackbarToast(
-          context,
-          'Account created successfully, Now try to login!',
-          Icons.check_circle,
-        );
+        storeData(context).then((value) {
+          Get.to(LoginView());
+          Utils.showSnackbarToast(
+            context,
+            'Account created successfully, Now try to login!',
+            Icons.check_circle,
+          );
+        });
       }).whenComplete(() => isLoading.value = false);
     } on FirebaseAuthException catch (e) {
       if (context.mounted) {
@@ -49,6 +53,17 @@ class SignupViewmodel extends GetxController {
                 context, 'An undefined Error happened.', Icons.error);
         }
       }
+    }
+  }
+
+  Future storeData(BuildContext context) async {
+    try {
+      await firestore.collection("Users").doc(auth.currentUser!.uid).set({
+        "username": userNameController.value.text,
+        "email": emailController.value.text,
+      });
+    } catch (e) {
+      Utils.showSnackbarToast(context, e.toString(), Icons.error);
     }
   }
 }

@@ -14,6 +14,7 @@ class _BottomBarState extends State<BottomBar> {
     const HomeView(),
     const HomeView(),
     const HomeView(),
+    const HomeView(),
   ];
   int currentIndex = 0;
   @override
@@ -43,12 +44,16 @@ class _BottomBarState extends State<BottomBar> {
           padding: const EdgeInsets.all(12),
           tabs: const [
             GButton(
-              icon: Icons.home_filled,
-              text: 'Home',
+              icon: Icons.calendar_month,
+              text: 'My plan',
             ),
             GButton(
-              icon: Icons.search,
-              text: 'Search',
+              icon: Icons.fitness_center,
+              text: 'Workouts',
+            ),
+            GButton(
+              icon: Icons.restaurant,
+              text: 'Food',
             ),
             GButton(
               icon: Icons.person,
