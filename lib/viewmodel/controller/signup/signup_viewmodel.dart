@@ -63,9 +63,7 @@ class SignupViewmodel extends GetxController {
         "email": emailController.value.text,
       });
     } catch (e) {
-      if (context.mounted) {
-        Utils.showSnackbarToast(context, e.toString(), Icons.error);
-      }
+      Utils.showSnackbarToast(context, e.toString(), Icons.error);
     }
   }
 }

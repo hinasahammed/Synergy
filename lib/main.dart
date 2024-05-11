@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Synergy',
+      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
@@ -39,16 +39,15 @@ class MyApp extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const SplashView();
           }
-          if (snapshot.data == null ||
-              FirebaseAuth.instance.currentUser == null) {
+          if (snapshot.data == null) {
             return LoginView();
           } else {
             final box = GetStorage();
             var alreadyStarted = box.read('alreadyStarted');
-            if (alreadyStarted != null || alreadyStarted == true) {
-              return const BottomBar();
-            } else {
+            if (alreadyStarted == null || !alreadyStarted) {
               return OnboardView();
+            } else {
+              return const BottomBar();
             }
           }
         },

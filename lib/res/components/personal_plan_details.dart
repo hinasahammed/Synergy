@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gap/gap.dart';
 import 'package:synergy/res/components/custom_button.dart';
 
@@ -40,7 +41,7 @@ class PersonalPlanDetails extends StatelessWidget {
           child: SingleChildScrollView(
               child: StreamBuilder(
             stream:
-                FirebaseFirestore.instance.collection('lose_plan').snapshots(),
+                FirebaseFirestore.instance.collection('gain_plan').snapshots(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(

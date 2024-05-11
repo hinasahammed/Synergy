@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:synergy/view/food/food_view.dart';
 import 'package:synergy/view/home/home_view.dart';
-import 'package:synergy/view/profile/profile_view.dart';
-import 'package:synergy/view/workout/workout_view.dart';
 
 class BottomBar extends StatefulWidget {
   const BottomBar({super.key});
@@ -15,9 +12,9 @@ class BottomBar extends StatefulWidget {
 class _BottomBarState extends State<BottomBar> {
   List pages = [
     const HomeView(),
-    WorkoutView(),
-    FoodView(),
-    const ProfileView(),
+    const HomeView(),
+    const HomeView(),
+    const HomeView(),
   ];
   int currentIndex = 0;
   @override

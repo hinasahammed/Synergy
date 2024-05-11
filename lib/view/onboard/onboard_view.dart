@@ -15,7 +15,9 @@ class OnboardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final size = MediaQuery.sizeOf(context);
     final onboardViewmodel = Get.put(OnboardViewmodel());
+    print(onboardViewmodel.currentPage.value);
     return Scaffold(
       body: SafeArea(
         child: Obx(

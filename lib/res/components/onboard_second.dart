@@ -29,9 +29,9 @@ class OnboardSecond extends StatelessWidget {
             Card(
               child: InkWell(
                 onTap: () {
-                  onboardViewmodel.selectedGoal.value == 'gain_plan'
+                  onboardViewmodel.selectedGoal.value == 'Gain'
                       ? onboardViewmodel.selectedGoal.value = ''
-                      : onboardViewmodel.selectedGoal.value = 'gain_plan';
+                      : onboardViewmodel.selectedGoal.value = 'Gain';
                 },
                 child: Container(
                   padding: const EdgeInsets.all(10),
@@ -39,7 +39,7 @@ class OnboardSecond extends StatelessWidget {
                   height: size.height * .2,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    border: onboardViewmodel.selectedGoal.value == 'gain_plan'
+                    border: onboardViewmodel.selectedGoal.value == 'Gain'
                         ? Border.all(color: theme.colorScheme.primary, width: 3)
                         : null,
                     image: const DecorationImage(
@@ -68,9 +68,9 @@ class OnboardSecond extends StatelessWidget {
             Card(
               child: InkWell(
                 onTap: () {
-                  onboardViewmodel.selectedGoal.value == 'lose_plan'
+                  onboardViewmodel.selectedGoal.value == 'Lose'
                       ? onboardViewmodel.selectedGoal.value = ''
-                      : onboardViewmodel.selectedGoal.value = 'lose_plan';
+                      : onboardViewmodel.selectedGoal.value = 'Lose';
                 },
                 child: Container(
                   padding: const EdgeInsets.all(10),
@@ -78,7 +78,7 @@ class OnboardSecond extends StatelessWidget {
                   height: size.height * .2,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    border: onboardViewmodel.selectedGoal.value == 'lose_plan'
+                    border: onboardViewmodel.selectedGoal.value == 'Lose'
                         ? Border.all(color: theme.colorScheme.primary, width: 3)
                         : null,
                     image: const DecorationImage(
